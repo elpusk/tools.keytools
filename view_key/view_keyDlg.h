@@ -21,6 +21,8 @@ public:
 	protected:
 	virtual void DoDataExchange(CDataExchange* pDX);	// DDX/DDV support
 
+private:
+	CRect m_rect_minimum;
 
 // Implementation
 protected:
@@ -38,4 +40,5 @@ public:
 	CEdit m_edit_view;
 	afx_msg void OnBnClickedButtonClear();
 	CButton m_check_enable_return;
+	afx_msg void OnGetMinMaxInfo(MINMAXINFO* lpMMI);
 };

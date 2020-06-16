@@ -69,6 +69,7 @@ BEGIN_MESSAGE_MAP(CviewkeyDlg, CDialogEx)
 	ON_WM_QUERYDRAGICON()
 	ON_WM_KEYUP()
 	ON_BN_CLICKED(IDC_BUTTON_CLEAR, &CviewkeyDlg::OnBnClickedButtonClear)
+	ON_WM_GETMINMAXINFO()
 END_MESSAGE_MAP()
 
 
@@ -104,6 +105,8 @@ BOOL CviewkeyDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// Set small icon
 
 	// TODO: Add extra initialization here
+	GetWindowRect(m_rect_minimum);
+
 	m_check_enable_return.SetCheck(BST_CHECKED);
 
 	return TRUE;  // return TRUE  unless you set the focus to a control
@@ -318,4 +321,13 @@ CString CviewkeyDlg::get_keystring(unsigned short w_key)
 void CviewkeyDlg::OnBnClickedButtonClear()
 {
 	m_edit_view.SetWindowText(L"");
+}
+
+
+void CviewkeyDlg::OnGetMinMaxInfo(MINMAXINFO* lpMMI)
+{
+	lpMMI->ptMinTrackSize.x = m_rect_minimum.Width();
+	lpMMI->ptMinTrackSize.y = m_rect_minimum.Height();
+
+	CDialogEx::OnGetMinMaxInfo(lpMMI);
 }

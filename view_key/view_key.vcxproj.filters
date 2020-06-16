@@ -54,6 +54,7 @@
     <None Include="res\viewkey.rc2">
       <Filter>Resource Files</Filter>
     </None>
+    <None Include="..\README.md" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\view_key.ico">
